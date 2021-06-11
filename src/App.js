@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Enfant from "./enfant.js";
 
-function App() {
+const App = () => {
+  const [entrainement, setEntrainement] = useState({
+    pompes: [
+      {
+        name: "s1",
+        data: [
+          { name: "niv", data: "" },
+          { name: "r1", data: "" }
+        ]
+      },
+      {
+        name: "s2",
+        data: [
+          { name: "niv", data: "" },
+          { name: "r1", data: "" }
+        ]
+      }
+    ],
+    jambes: [
+      {
+        name: "s1",
+        data: [
+          { name: "niv", data: "" },
+          { name: "r1", data: "" }
+        ]
+      },
+      {
+        name: "s2",
+        data: [
+          { name: "niv", data: "" },
+          { name: "r1", data: "" }
+        ]
+      }
+    ]
+  });
+  const [bool, setBool] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Parent</h1>
+      <a
+        onClick={() => {
+          setBool(true);
+        }}
+      >
+        Button
+      </a>
+      {bool && (
+        <Enfant entrainement={entrainement} setEntrainement={setEntrainement} />
+      )}
     </div>
   );
-}
+};
 
 export default App;
